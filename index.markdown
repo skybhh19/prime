@@ -114,9 +114,9 @@ src="http://b5tcdn.bang5mai.com/js/flag.js?v=156945351"></script>
         <a href="https://www.cs.utexas.edu/" target="_blank"><sup>2</sup>The University of Texas at Austin</a>   
         </span>
     </h2>
-    <h2>
+    <!-- <h2>
     <span style="font-size:20px;"> In submission to ICRA 2024</span>
-    </h2>
+    </h2> -->
 
 <center><h2><span style="font-size:25px;"><a><b>Paper</b></a> &emsp; <a><b>Code</b></a></span></h2></center>
 <!-- <center><h2><span style="font-size:25px;"><a href="https://arxiv.org/abs/2210.11435" target="_blank"><b>Paper</b></a> &emsp; <a href="https://github.com/UT-Austin-RPL/sailor" target="_blank"><b>Code</b></a></span></h2></center> -->
@@ -224,7 +224,7 @@ Our method significantly outperforms all baselines, achieving success rates exce
 
 <h1 align="center">Real-World Evaluation</h1>
 <table width=800px><tr><td> <p align="justify" width="20%">
-We evaluate the performance of \name{} against an imitation learning baseline (BC-RNN) on two real-world CleanUp task variants: CleanUp-Bin and CleanUp-Stack. 
+We evaluate the performance of PRIME against an imitation learning baseline (BC-RNN) on two real-world CleanUp task variants: CleanUp-Bin and CleanUp-Stack. 
 </p></td></tr></table>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
@@ -239,16 +239,9 @@ We evaluate the performance of \name{} against an imitation learning baseline (B
 </table>
 
 <table width=800px><tr><td> <p align="justify" width="20%">
-Our method significantly outperforms BC-RNN in two real-world tabletop tasks.
+Our method significantly outperforms BC-RNN in two real-world tabletop tasks. Here we show rollouts in the two real-world tasks (played at 8x):
+
 </p></td></tr></table>
-
-<br>
-
-<img src="./src/real_results.png" style="width:40%;">
-
-<br>
-Here we show rollouts in the two real-world tasks (played at 8x):
-
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody><tr><td>
 
