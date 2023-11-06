@@ -127,7 +127,7 @@ src="http://b5tcdn.bang5mai.com/js/flag.js?v=156945351"></script>
                 <tr>
                     <td>
 <p align="justify" width="20%">
-Imitation learning has shown great potential for enabling robots to solve complex manipulation tasks. However, applying imitation learning to complex manipulation tasks often suffers from low data efficiency, where the compounding errors in deployment are usually large in a low-data regime. To this end, we present PRIME (Pimitive-based Imitation with Data Efficiency), a primitive-based imitation learning framework designed to address the data-inefficiency challenge in imitation learning by decoupling sensorimotor control into a high-level control policy and low-level pre-existing behavior primitives. PRIME decomposes raw sensory data into sequences of primitives and leverages imitation learning to learn the high-level control policy to sequence behavior primitives. Our experiments demonstrate that PRIME achieves a significant performance improvement with success rates increasing over 1x in simulation and over 2x on a real robot compared to baseline approaches.
+Imitation learning has shown great potential for enabling robots to solve complex manipulation tasks. However, applying imitation learning to complex manipulation tasks often suffers from low data efficiency, where the compounding errors in deployment are usually large in a low-data regime. To this end, we present PRIME (Pimitive-based Imitation with Data Efficiency), a primitive-based imitation learning framework designed to address the data-inefficiency challenge in imitation learning by decoupling sensorimotor control into a high-level control policy and low-level pre-existing behavior primitives. PRIME decomposes raw sensory data into sequences of primitives and leverages imitation learning to learn the high-level control policy to sequence behavior primitives. Our experiments demonstrate that PRIME achieves a significant performance improvement with success rates increasing up to 33.6% in simulation and up to 48.3% on a real robot compared to baseline approaches
 </p></td></tr></table>
 </p>
   </div>
@@ -210,7 +210,7 @@ We perform evaluations on three tasks from the robosuite simulator. The first tw
 <br>
 <br>
 <table width=800px><tr><td> <p align="justify" width="20%">
-Our method significantly outperforms all baselines, achieving success rates exceeding 95\% across all tasks with remarkable robustness. This showcases our method's effectiveness in achieving data-efficient imitation learning through the decomposition of sensorimotor demonstrations into concise primitive sequences to simplify task complexity.
+Our method significantly outperforms all baselines, achieving success rates exceeding 95% across all tasks with remarkable robustness. This showcases our method's effectiveness in achieving data-efficient imitation learning through the decomposition of sensorimotor demonstrations into concise primitive sequences to simplify task complexity.
 </p></td></tr></table>
 
 
