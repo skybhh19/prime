@@ -98,7 +98,7 @@ src="http://b5tcdn.bang5mai.com/js/flag.js?v=156945351"></script>
 
 
 <div id="primarycontent">
-<center><h1><strong>PRIME: Scaffolding Manipulation Tasks with Behavior Primitives for Data-Efficient Imitation Learning</strong></h1></center>
+<center><h1><strong>PRIME: Scaffolding Manipulation Tasks with Behavior Primitives for Data-efficient Imitation Learning</strong></h1></center>
 <center><h2>
 <span style="font-size:25px;">
     <a href="https://skybhh19.github.io/" target="_blank">Tian Gao<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
@@ -171,7 +171,7 @@ Imitation learning has shown great potential for enabling robots to solve comple
 </table>
 
 <table width=800px><tr><td> <p align="justify" width="20%">
-We develop a self-supervised data collection strategy by randomly executing primitives in the environment to contextualize primitives with task environment information. With the generated dataset, we train an inverse dynamics model to map from segments of raw sensory demonstrations to primitives, comprising primitive categories and their parameters. To derive the optimal primitive sequences, we build a demonstration interpreter to parse raw sensory demonstrations with the learned inverse dynamics model. Eventually, we train the policy from parsed primitive sequences.</p></td></tr></table>
+We develop a self-supervised data collection strategy that involves randomly executing primitives in the environment to contextualize them with task-specific information. With the generated dataset, we train an inverse dynamics model that maps segments of raw sensory demonstrations to primitives, comprising primitive categories and their parameters. To derive the optimal primitive sequences, we build a demonstration interpreter capable of parsing raw sensory demonstrations using the learned inverse dynamics model. Finally, we train the policy from parsed primitive sequences.</p></td></tr></table>
 
 <br>
 
