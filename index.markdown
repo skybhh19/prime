@@ -118,7 +118,8 @@ src="http://b5tcdn.bang5mai.com/js/flag.js?v=156945351"></script>
     <span style="font-size:20px;"> In submission to ICRA 2024</span>
     </h2> -->
 
-<center><h2><span style="font-size:25px;"><a><b>Paper</b></a> &emsp; <a><b>Code</b></a></span></h2></center>
+<!-- <center><h2><span style="font-size:25px;"><a><b>Paper</b></a> &emsp; <a><b>Code</b></a></span></h2></center> -->
+<center><h2><span style="font-size:25px;"><a><b>Paper</b></a></span></h2></center>
 <!-- <center><h2><span style="font-size:25px;"><a href="https://arxiv.org/abs/2210.11435" target="_blank"><b>Paper</b></a> &emsp; <a href="https://github.com/UT-Austin-RPL/sailor" target="_blank"><b>Code</b></a></span></h2></center> -->
 
 <p>
