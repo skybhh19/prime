@@ -248,13 +248,13 @@ Our method significantly outperforms BC-RNN in two real-world tabletop tasks. He
 
     <tr>
         <td style="width:100%">
-          <h2 align="center">CleanUp-Bin: Ours (Success Rate of 90.0%)</h2>
+          <h2 align="center">CleanUp-Bin</h2>
         </td>
     </tr>
     <tr>
         <td style="width:100%">
         <video muted autoplay loop width="100%">
-            <source src="./src/real_bin_ours_90.mp4"  type="video/mp4">
+            <source src="./src/bin_single_row.mp4"  type="video/mp4">
         </video>
         </td>
     </tr>
@@ -267,51 +267,13 @@ Our method significantly outperforms BC-RNN in two real-world tabletop tasks. He
 
     <tr>
         <td style="width:100%">
-          <h2 align="center">CleanUp-Bin: BC-RNN (Success Rate of 41.7%)</h2>
+          <h2 align="center">CleanUp-Stack</h2>
         </td>
     </tr>
     <tr>
         <td style="width:100%">
         <video muted autoplay loop width="100%">
-            <source src="./src/real_bin_bcrnn_417.mp4"  type="video/mp4">
-        </video>
-        </td>
-    </tr>
-</td></tr>
-</tbody>
-</table>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr><td>
-
-    <tr>
-        <td style="width:100%">
-          <h2 align="center">CleanUp-Stack: Ours (Success Rate of 68.3%)</h2>
-        </td>
-    </tr>
-    <tr>
-        <td style="width:100%">
-        <video muted autoplay loop width="100%">
-            <source src="./src/real_stack_ours_683.mp4"  type="video/mp4">
-        </video>
-        </td>
-    </tr>
-</td></tr>
-</tbody>
-</table>
-
-<table border="0" cellspacing="10" cellpadding="0" align="center">
-  <tbody><tr><td>
-
-    <tr>
-        <td style="width:100%">
-          <h2 align="center">CleanUp-Stack: BC-RNN (Success Rate of 48.3%)</h2>
-        </td>
-    </tr>
-    <tr>
-        <td style="width:100%">
-        <video muted autoplay loop width="100%">
-            <source src="./src/real_stack_bcrnn_483.mp4"  type="video/mp4">
+            <source src="./src/stack_single_row.mp4"  type="video/mp4">
         </video>
         </td>
     </tr>
