@@ -159,7 +159,7 @@ Imitation learning has shown great potential for enabling robots to acquire comp
 
 <br><hr> 
 <h1 align="center">Framework Overview</h1>
-
+<br>
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody><tr>  <td align="center" valign="middle">
   <video muted autoplay width="100%">
