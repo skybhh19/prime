@@ -128,7 +128,7 @@ src="http://b5tcdn.bang5mai.com/js/flag.js?v=156945351"></script>
                 <tr>
                     <td>
 <p align="justify" width="20%">
-Imitation learning has shown great potential for enabling robots to solve complex manipulation tasks. However, applying imitation learning to complex manipulation tasks often suffers from low data efficiency, where the compounding errors in deployment are usually large in a low-data regime. To this end, we present PRIME (Pimitive-based Imitation with Data Efficiency), a primitive-based imitation learning framework designed to address the data inefficiency challenge in imitation learning by decoupling sensorimotor control into a high-level control policy and low-level pre-built behavior primitives. PRIME decomposes raw sensory data into sequences of primitives and leverages imitation learning to learn the high-level control policy to sequence behavior primitives. Our experiments demonstrate that PRIME achieves a significant performance improvement in manipulation tasks with success rates increasing by up to 33.6% in the simulation and up to 48.3% on the real robot compared to baseline approaches.
+Imitation learning has shown great potential for enabling robots to acquire complex manipulation behaviors. However, these algorithms suffer from high sample complexity in long-horizon tasks, where compounding errors accumulate over the task horizons. We present PRIME (PRimitive-based IMitation with Data Efficiency), a behavior primitive-based framework designed for improving the data efficiency of imitation learning. PRIME scaffolds robot tasks by decomposing task demonstrations into primitive sequences, followed by learning a high-level control policy to sequence primitives through imitation learning. Our experiments demonstrate that PRIME achieves a significant performance improvement in multi-stage manipulation tasks, with 33.6% higher success rates in simulation over state-of-the-art baselines and 48.3% on physical hardware.
 </p></td></tr></table>
 </p>
   </div>
@@ -142,7 +142,7 @@ Imitation learning has shown great potential for enabling robots to solve comple
   <tbody><tr>  <td align="center" valign="middle">
   <!-- <a href="./src/approach.png"> <img src="./src/approach.png" style="width:100%;">  </a> -->
   <video muted autoplay width="100%">
-      <source src="./src/pull_figure_v2.mp4"  type="video/mp4">
+      <source src="./src/pull_figure.mp4"  type="video/mp4">
   </video>
   </td>
   </tr>
@@ -153,7 +153,7 @@ Imitation learning has shown great potential for enabling robots to solve comple
                 <tr>
                     <td>
   <p align="justify" width="20%">
-  We present a data-efficient imitation learning framework that scaffolds task demonstrations into behavior primitives. Given raw sensory task demonstrations, we utilize a demo interpreter to parse these demonstrations into sequences of primitives and subsequently train a policy through imitation learning from these primitive sequences.
+  We present a data-efficient imitation learning framework that scaffolds task demonstrations into behavior primitives. Given task demonstrations, we utilize a trajectory parser to parse each demonstration into a sequence of primitive types and their corresponding parameters. Subsequently, we use imitation learning to acquire a policy capable of predicting primitive types and corresponding parameters based on observations.
 </p></td></tr></table>
 
 
@@ -172,7 +172,7 @@ Imitation learning has shown great potential for enabling robots to solve comple
 </table>
 
 <table width=800px><tr><td> <p align="justify" width="20%">
-We develop a self-supervised data collection strategy that involves randomly executing primitives in the environment to contextualize them with task-specific information. With the generated dataset, we train an inverse dynamics model that maps segments of raw sensory demonstrations to primitives, comprising primitive categories and their parameters. To derive the optimal primitive sequences, we build a demonstration interpreter capable of parsing raw sensory demonstrations using the learned inverse dynamics model. Finally, we train the policy from parsed primitive sequences.</p></td></tr></table>
+We develop a self-supervised data generation strategy that randomly executes sequences of behavior primitives in the environment. With the generated dataset, we train an inverse dynamics model (IDM) that maps initial states and final states from segments in task demonstrations to primitive types and corresponding parameters. To derive the optimal primitive sequences, we build a trajectory parser capable of parsing task demonstrations into primitive sequences using the learned inverse dynamics model. Finally, we train the policy using parsed primitive sequences.</p></td></tr></table>
 
 <br>
 
@@ -282,7 +282,21 @@ Our method significantly outperforms BC-RNN in two real-world tabletop tasks. He
 </table>
 
 <br>
+
+<hr>
+
+<h1 align="center">Visualization of segmented primitive sequences</h1>
+<table width=800px><tr><td> <p align="justify" width="20%">
+For each task, we select five human demonstrations and visualize the segmented primitive sequences as interpreted by the trajectory parser.
+</p></td></tr></table>
+
 <br>
+
+<img src="./src/vis_primitive.pdf" style="width:50%;">
+
+<br>
+<br>
+
 <hr>
 <center><h1>Citation</h1></center>
 
