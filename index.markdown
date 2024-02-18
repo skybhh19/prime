@@ -292,7 +292,7 @@ For each task, we select five human demonstrations and visualize the segmented p
 
 <br>
 
-<img src="./src/vis_primitive.pdf" style="width:50%;">
+<img src="./src/vis_primitive.png" style="width:100%;">
 
 <br>
 <br>
