@@ -104,14 +104,15 @@ src="http://b5tcdn.bang5mai.com/js/flag.js?v=156945351"></script>
     <a href="https://skybhh19.github.io/" target="_blank">Tian Gao<sup>1</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="http://snasiriany.me/" target="_blank">Soroush Nasiriany<sup>2</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://huihanl.github.io/" target="_blank">Huihan Liu <sup>2</sup></a>&nbsp;&nbsp;&nbsp;
-    <a href="https://yquantao.github.io/" target="_blank">Quantao Yang<sup>2</sup></a>&nbsp;&nbsp;&nbsp;
+    <a href="https://yquantao.github.io/" target="_blank">Quantao Yang<sup>3</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://cs.utexas.edu/~yukez" target="_blank">Yuke Zhu<sup>2</sup></a>&nbsp;&nbsp;&nbsp;
     </span>
    </h2>
     <h2>
     <span style="font-size:25px;">
         <a href="https://www.stanford.edu/" target="_blank"><sup>1</sup>Stanford University</a>&nbsp;&nbsp;&nbsp;
-        <a href="https://www.cs.utexas.edu/" target="_blank"><sup>2</sup>The University of Texas at Austin</a>   
+        <a href="https://www.cs.utexas.edu/" target="_blank"><sup>2</sup>The University of Texas at Austin</a>&nbsp;&nbsp;&nbsp; 
+		<a href="https://www.kth.se/en" target="_blank"><sup>3</sup>KTH Royal Institute of Technology</a>
         </span>
     </h2>
     <!-- <h2>
@@ -305,12 +306,12 @@ For each task, we select five human demonstrations and visualize the segmented p
                   <td>
                   <left>
 <pre><code style="display:block; overflow-x: auto">
-    <!--@inproceedings{nasiriany2022sailor,
-      title={Learning and Retrieval from Prior Data for Skill-based Imitation Learning},
-      author={Soroush Nasiriany and Tian Gao and Ajay Mandlekar and Yuke Zhu},
-      booktitle={Conference on Robot Learning (CoRL)},
-      year={2022}
-    }-->
+    @article{gao2024prime,
+	  title={PRIME: Scaffolding Manipulation Tasks with Behavior Primitives for Data-Efficient Imitation Learning},
+	  author={Gao, Tian and Nasiriany, Soroush and Liu, Huihan and Yang, Quantao and Zhu, Yuke},
+	  journal={arXiv preprint arXiv:2403.00929},
+	  year={2024}
+	}
 </code></pre>
 </left></td></tr></table>
 <br><br>
