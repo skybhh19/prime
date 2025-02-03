@@ -1,43 +1,70 @@
 # PRIME: Scaffolding Manipulation Tasks with Behavior Primitives for Data-Efficient Imitation Learning
 <br>
 
-This is the internal codebase for the [**PRIME**](https://ut-austin-rpl.github.io/PRIME/) paper:
+This is the codebase for the [**PRIME**](https://ut-austin-rpl.github.io/prime/) paper:
 
 **PRIME: Scaffolding Manipulation Tasks with Behavior Primitives for Data-Efficient Imitation Learning**
 <br> [Tian Gao](https://skybhh19.github.io/), [Soroush Nasiriany](http://snasiriany.me/), [Huihan Liu](https://https://huihanl.github.io/), [Quantao Yang](https://yquantao.github.io/), [Yuke Zhu](https://www.cs.utexas.edu/~yukez/) 
 <br> [UT Austin Robot Perception and Learning Lab](https://rpl.cs.utexas.edu/)
 <br> IEEE Robotics and Automation Letters (RA-L), 2024
-<br> **[[Paper]](http://arxiv.org/abs/2403.00929)** &nbsp;**[[Project Website]](https://ut-austin-rpl.github.io/PRIME/)** 
+<br> **[[Paper]](http://arxiv.org/abs/2403.00929)** &nbsp;**[[Project Website]](https://ut-austin-rpl.github.io/prime/)** 
 
-<a href="https://ut-austin-rpl.github.io/PRIME/" target="_blank"><img src="src/pull_figure.png" width="90%" /></a>
+<a href="https://ut-austin-rpl.github.io/prime/" target="_blank"><img src="images/pull_figure.png" width="90%" /></a>
 
 <br>
 
 ## Installation
 ```commandline
-git clone 
+git clone git@github.com:skybhh19/prime.git
 cd prime
-conda env create -f environment.yml
+conda create -n prime python=3.7
 conda activate prime
-pip install -e robosuite
-pip install -e robomimic
+pip install -r requirements.txt
+```
+Install robosuite.
+```commandline
+git clone git@github.com:skybhh19/robosuite.git
+cd robosuite
+pip install -e .
+```
+Install robomimic.
+```commandline
+git clone git@github.com:skybhh19/robomimic.git
+de robomimic
+pip install -e .
 ```
 
 ## Data collection
 
 ### Human demonstration collection
 
-We collect human demonstrations using [Spacemouse](https://ut-austin-rpl.github.io/deoxys-docs/html/tutorials/using_teleoperation_devices.html). 
+We collect 30 human demonstrations for each task using [Spacemouse](https://ut-austin-rpl.github.io/deoxys-docs/html/tutorials/using_teleoperation_devices.html). 
 ```commandline
-cd robosuite/robosuite
-python scripts/collect_human_demonstrations.py --environment CleanUpMediumSmallInitD2 --directory /path/to/your/directory --only-yaw --only-sucess --device spacemouse
-python scripts/collect_human_demonstrations.py --environment NutAssemblyRoundSmallInit --directory /path/to/your/directory --only-yaw --only-sucess --device spacemouse
-python scripts/collect_human_demonstrations.py --environment PickPlaceMilk --directory /path/to/your/directory --only-yaw --only-sucess --device spacemouse
+cd robosuite
+python robosuite/scripts/collect_human_demonstrations.py --environment CleanUpMediumSmallInitD2 --directory ../prime/data/human_demos --only-yaw --only-sucess --device spacemouse
+python robosuite/scripts/collect_human_demonstrations.py --environment NutAssemblyRoundSmallInit --directory ../prime/data/human_demos --only-yaw --only-sucess --device spacemouse
+python robosuite/scripts/collect_human_demonstrations.py --environment PickPlaceMilk --directory ../prime/data/human_demos --only-yaw --only-sucess --device spacemouse
 ```
+Convert the demonstrations to the format that can be used for training.
+```commandline
+cd robomimic
 
+# TidyUp
+python robomimic/scripts/conversion/convert_robosuite.py --dataset ../prime/data/human_demos/CleanUpMediumSmallInitD2/demo.hdf5
+python robomimic/scripts/dataset_states_to_obs.py --dataset ../prime/data/human_demos/CleanUpMediumSmallInitD2/demo.hdf5 --output_name demo_robomimic.hdf5 --camera_names agentview robot0_eye_in_hand
+# NutAssembly
+python robomimic/scripts/conversion/convert_robosuite.py --dataset ../prime/data/human_demos/NutAssemblyRoundSmallInit/demo.hdf5
+python robomimic/scripts/dataset_states_to_obs.py --dataset ../prime/data/human_demos/NutAssemblyRoundSmallInit/demo.hdf5 --output_name demo_robomimic.hdf5 --camera_names agentview robot0_eye_in_hand
+# PickPlace
+python robomimic/scripts/conversion/convert_robosuite.py --dataset ../prime/data/human_demos/PickPlaceMilk/demo.hdf5
+python robomimic/scripts/dataset_states_to_obs.py --dataset ../prime/data/human_demos/PickPlaceMilk/demo.hdf5 --output_name demo_robomimic.hdf5 --camera_names agentview robot0_eye_in_hand
+```
 ### Data collection for Inverse Dynamics Models (IDMs)
 ```commandline
-python train.py --collect-demo --reformat-rollout-data --data-dir /path/to/your/directory --env NutAssemblyRoundSmallInit --num-trajs 120 --num-primitives 15 --save --num-data-workers 45 --num-others-per-traj 60 --policy-pretrain --verbose
+cd prime
+python train.py --collect-demos --reformat-rollout-data --data-dir data/rollout_data --env CleanUpMediumSmallInitD2 --num-trajs 40 --num-primitives 50 --save --num-data-workers 70 --num-others-per-traj 100 --policy-pretrain --verbose  # TidyUp
+python train.py --collect-demos --reformat-rollout-data --data-dir data/rollout_data --env NutAssemblyRoundSmallInit --num-trajs 120 --num-primitives 15 --save --num-data-workers 45 --num-others-per-traj 60 --policy-pretrain --verbose  # NutAssembly
+python train.py --collect-demos --reformat-rollout-data --data-dir data/rollout_data --env PickPlaceMilk --num-trajs 50 --num-primitives 15 --save --num-data-workers 45 --num-others-per-traj 60 --policy-pretrain --verbose  # PickPlace
 ```
 
 ## Training Trajectory Parser
@@ -45,33 +72,58 @@ python train.py --collect-demo --reformat-rollout-data --data-dir /path/to/your/
 ### Training IDMs
 
 ```commandline
-cd robomimic/robomimic
-python scripts/train.py --config exps/primitive/NutAssembly/idm/type/seed1.json 
-python scripts/train.py --config exps/primitive/NutAssembly/idm/params/seed1.json 
+cd robomimic
+
+# TidyUp
+python robomimic/scripts/train.py --config robomimic/exps/primitive/CleanUpMediumSmallInitD2/idm/type/seed1.json 
+python robomimic/scripts/train.py --config robomimic/exps/primitive/CleanUpMediumSmallInitD2/idm/params/seed1.json 
+# NutAssembly
+python robomimic/scripts/train.py --config robomimic/exps/primitive/NutAssemblyRoundSmallInit/idm/type/seed1.json 
+python robomimic/scripts/train.py --config robomimic/exps/primitive/NutAssemblyRoundSmallInit/idm/params/seed1.json 
+# PickPlace
+python robomimic/scripts/train.py --config robomimic/exps/primitive/PickPlaceMilk/idm/type/seed1.json 
+python robomimic/scripts/train.py --config robomimic/exps/primitive/PickPlaceMilk/idm/params/seed1.json 
 ```
 
 ### Segmenting human demonstrations
 ```commandline
-python train.py --segment-demos --demo-path /path/to/human_demos --idm-type-model-path=/path/to/idm_type_ckpt --idm-params-model-path=/path/to/idm_params_ckpt --segmented-data-dir /path/to/segmented_trajectories --save-failed-trajs --max-primitive-horizon=200 --playback-segmented-trajs --verbose --num-augmentation-type 50 --num-augmentation-params 100 
+cd prime
+python train.py --segment-demos --demo-path data/human_demos/CleanUpMediumSmallInitD2/demo_robomimic.hdf5 --idm-type-model-path=trained_models/CleanUpMediumSmallInitD2/idm_ckpts/type/idm_type_seed1/20250202021653/models/model_epoch_300.pth --idm-params-model-path=trained_models/CleanUpMediumSmallInitD2/idm_ckpts/params/idm_params_seed1/20250202021704/models/model_epoch_600.pth --segmented-data-dir data/human_demos/CleanUpMediumSmallInitD2/segmented_data/seed1 --save-failed-trajs --max-primitive-horizon=80 --playback-segmented-trajs --verbose --num-augmentation-type 50 --num-augmentation-params 100  # TidyUp
+python train.py --segment-demos --demo-path data/NutAssemblyRoundSmallInit/demo_robomimic.hdf5 --idm-type-model-path=trained_models/NutAssemblyRoundSmallInit/idm_ckpts/type/idm_type_seed1/20250120150133/models/model_epoch_300.pth --idm-params-model-path=trained_models/NutAssemblyRoundSmallInit/idm_ckpts/params/idm_params_seed1/20250120151327/models/model_epoch_600.pth --segmented-data-dir data/human_demos/NutAssemblyRoundSmallInit/segmented_data/seed1 --save-failed-trajs --max-primitive-horizon=200 --playback-segmented-trajs --verbose --num-augmentation-type 50 --num-augmentation-params 100  # NutAssembly
+python train.py --segment-demos --demo-path data/PickPlaceMilk/demo_robomimic.hdf5 --idm-type-model-path=trained_models/PickPlaceMilk/idm_ckpts/type/idm_type_seed1/20250121052558/models/model_epoch_300.pth --idm-params-model-path=trained_models/PickPlaceMilk/idm_ckpts/params/idm_parmas_seed1/20250122040510/models/model_epoch_600.pth --segmented-data-dir data/human_demos/PickPlaceMilk/segmented_data/seed1 --save-failed-trajs --max-primitive-horizon=200 --playback-segmented-trajs --verbose --num-augmentation-type 50 --num-augmentation-params 100  # PickPlace
 ```
 
 ## Training Policy with primitives
 
 ### Pre-training policy
 ```commandline
-python scripts/train.py --config exps/primitive/NutAssembly/policy/pt/params/seed1.json 
+cd robomimic
+python robomimic/scripts/train.py --config robomimic/exps/primitive/CleanUpMediumSmallInitD2/policy/pt/params/seed1.json  # TidyUP
+python robomimic/scripts/train.py --config robomimic/exps/primitive/NutAssemblyRoundSmallInit/policy/pt/params/seed1.json  # NutAssembly
+python robomimic/scripts/train.py --config robomimic/exps/primitive/PickPlaceMilk/policy/pt/params/seed1.json  # PickPlace
 ```
 
 ### Fine-tuning policy
 ```commandline
-cd robomimic/robomimic
-python scripts/train.py --config exps/primitive/NutAssembly/policy/ft/type/seed1.json 
-python scripts/train.py --config exps/primitive/NutAssembly/policy/ft/params/seed1.json 
+cd robomimic
+
+# TidyUp
+python robomimic/scripts/train.py --config robomimic/exps/primitive/CleanUpMediumSmallInitD2/policy/ft/type/seed1.json 
+python robomimic/scripts/train.py --config robomimic/exps/primitive/CleanUpMediumSmallInitD2/policy/ft/params/seed1.json 
+# NutAssembly
+python robomimic/scripts/train.py --config robomimic/exps/primitive/NutAssemblyRoundSmallInit/policy/ft/type/seed1.json 
+python robomimic/scripts/train.py --config robomimic/exps/primitive/NutAssemblyRoundSmallInit/policy/ft/params/seed1.json 
+# PickPlace
+python robomimic/scripts/train.py --config robomimic/exps/primitive/PickPlaceMilk/policy/ft/type/seed1.json 
+python robomimic/scripts/train.py --config robomimic/exps/primitive/PickPlaceMilk/policy/ft/params/seed1.json 
 ``` 
 
 ### Policy evaluation
 ```commandline
-python eval.py --policy-type-path /path/to/policy_type_ckpt --policy-params-path /path/to/policy_params_ckpt --env-horizon 1000
+cd prime
+python eval.py --policy-type-model-dir trained_models/CleanUpMediumSmallInitD2/policy_ft_ckpts/type/policy_ft_type_seed1/20250202043934/models/ --policy-params-model-dir trained_models/CleanUpMediumSmallInitD2/policy_ft_ckpts/params/policy_ft_params_seed1/20250202043033/models/ --env-horizon 800  # TidyUp
+python eval.py --policy-type-model-dir trained_models/NutAssemblyRoundSmallInit/policy_ft_ckpts/type/policy_ft_type_seed1/20250202042844/models/ --policy-params-model-dir trained_models/NutAssemblyRoundSmallInit/policy_ft_ckpts/params/policy_ft_params_seed2/20250202040709/models/ --env-horizon 400  # NutAssembly
+python eval.py --policy-type-model-dir trained_models/PickPlaceMilk/policy_ft_ckpts/type/policy_ft_type_seed1/20250202042905/models/ --policy-params-model-dir trained_models/PickPlaceMilk/policy_ft_ckpts/params/policy_ft_params_seed1/20250202031947/models/ --env-horizon 400  # PickPlace
 ```
 
 ## Citation
