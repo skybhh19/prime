@@ -9,11 +9,11 @@ from tqdm import trange
 
 from robosuite.controllers.skill_controller import SkillController
 
-from configs.primitive_config import get_primitive_config
-from utils.segment_utils import get_pred_params
+from prime.configs.primitive_config import get_primitive_config
+from prime.utils.segment_utils import get_pred_params
+import prime.utils.env_utils as EnvUtils
 
 import robomimic.utils.file_utils as FileUtils
-import robomimic.utils.env_utils as EnvUtils
 from robomimic.envs.env_base import EnvBase
 from robomimic.scripts.split_train_val import split_train_val_from_hdf5
 

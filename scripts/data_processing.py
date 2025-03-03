@@ -1,11 +1,12 @@
 import sys
-sys.path.append('')
+import os
+sys.path.append('.')
 from multiprocessing import Pool
 
-from configs.input_args import get_args
-from core.collect_data import collect_primitive_rollouts
-from core.segment_data import segment_demos
-from utils.data_utils import reformat_rollout_data, reformat_segmented_trajs
+from prime.configs.input_args import get_args
+from prime.core.collect_data import collect_primitive_rollouts
+from prime.core.segment_data import segment_demos
+from prime.utils.data_utils import reformat_rollout_data, reformat_segmented_trajs
 
 
 if __name__ == "__main__":

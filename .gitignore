@@ -1,0 +1,9 @@
+__pycache__/
+.idea/
+vis/
+policy_results/
+data/
+trained_models/
+images/
+prime/algo/__pycache__/
+prime/configs/__pycache__/

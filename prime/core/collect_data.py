@@ -1,15 +1,16 @@
 import random
 import numpy as np
 import os
-import sys
-sys.path.append('')
-from robosuite import load_controller_config
 from tqdm import tqdm
 import fcntl
 import pickle
 import logging
+
+from prime.configs.primitive_config import get_primitive_config
+
+from robosuite import load_controller_config
 from robosuite.controllers.skill_controller import SkillController
-from configs.primitive_config import get_primitive_config
+
 import robomimic.envs.env_base as EB
 import robomimic.utils.env_utils as EnvUtils
 

@@ -1,4 +1,3 @@
-
 def get_primitive_config(env_name):
     if env_name in ['StackTwoTypesDomain', 'SortTwoObjectsDomain', 'NutAssemblySquare', 'NutAssembly',
                     'NutAssemblyRound', 'NutAssemblyRoundSmallInit', 'PickPlaceCan', 'PickPlace', 'PickPlaceMilk']:

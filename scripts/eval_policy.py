@@ -1,17 +1,19 @@
+import sys
+sys.path.append('.')
 import imageio
 import numpy as np
 from PIL import Image, ImageDraw
 import os
 from tqdm import trange
 
-from configs.input_args import get_args
-from configs.primitive_config import get_primitive_config
+from prime.configs.input_args import get_args
+from prime.configs.primitive_config import get_primitive_config
 
 from robosuite.controllers.skill_controller import SkillController
+import robosuite.utils.macros as macros
+
 import robomimic.utils.file_utils as FileUtils
 
-
-import robosuite.utils.macros as macros
 # macros.IMAGE_CONVENTION = "opencv"
 
 def eval_policy(policy_type_path, policy_params_path, env_horizon, device, num_rollouts, render, write_video,

@@ -3,15 +3,15 @@ import os
 import pickle
 from tqdm import trange
 
-from configs.primitive_config import get_primitive_config
-from utils.data_utils import load_hdf5_demo
-from utils.segment_utils import parse_demo_to_primitive_seq, test_with_primitives
+from prime.configs.primitive_config import get_primitive_config
+from prime.utils.data_utils import load_hdf5_demo
+from prime.utils.segment_utils import parse_demo_to_primitive_seq, test_with_primitives
+import prime.utils.env_utils as EnvUtils
 
 from robosuite import load_controller_config
 from robosuite.controllers.skill_controller import SkillController
 
 import robomimic.utils.file_utils as FileUtils
-import robomimic.utils.env_utils as EnvUtils
 
 
 def segment_demos(demo_path, num_demos, device, render, idm_type_model_path, idm_params_model_path, primitive_set,
