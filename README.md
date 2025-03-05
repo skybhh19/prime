@@ -16,7 +16,6 @@ This is the codebase for the [**PRIME**](https://ut-austin-rpl.github.io/prime/)
 ## Installation
 ```commandline
 git clone git@github.com:skybhh19/prime.git
-cd prime
 conda create -n prime python=3.8
 conda activate prime
 pip install torch torchvision torchaudio  # Follow the instructions on https://pytorch.org/get-started/locally/
@@ -31,11 +30,12 @@ Install robomimic.
 ```commandline
 git clone https://github.com/ARISE-Initiative/robomimic.git
 cd robomimic
-pip install -e .
 git checkout b5d2aa9902825c6c652e
+pip install -e .
 ```
 Install requirements.
 ```commandline
+cd prime
 pip install -r requirements.txt     
 ```
 
@@ -46,9 +46,9 @@ pip install -r requirements.txt
 We collect 30 human demonstrations for each task using [Spacemouse](https://ut-austin-rpl.github.io/deoxys-docs/html/tutorials/using_teleoperation_devices.html). 
 ```commandline
 cd robosuite
-python robosuite/scripts/collect_human_demonstrations.py --environment CleanUpMediumSmallInitD2 --directory ../prime/data/human_demos --only-yaw --only-sucess --device spacemouse
-python robosuite/scripts/collect_human_demonstrations.py --environment NutAssemblyRoundSmallInit --directory ../prime/data/human_demos --only-yaw --only-sucess --device spacemouse
-python robosuite/scripts/collect_human_demonstrations.py --environment PickPlaceMilk --directory ../prime/data/human_demos --only-yaw --only-sucess --device spacemouse
+python robosuite/scripts/collect_human_demonstrations.py --environment CleanUpMediumSmallInitD2 --directory ../prime/data/human_demos --only-yaw --only-success --device spacemouse
+python robosuite/scripts/collect_human_demonstrations.py --environment NutAssemblyRoundSmallInit --directory ../prime/data/human_demos --only-yaw --only-success --device spacemouse
+python robosuite/scripts/collect_human_demonstrations.py --environment PickPlaceMilk --directory ../prime/data/human_demos --only-yaw --only-success --device spacemouse
 ```
 Convert the demonstrations to the format that can be used for training.
 ```commandline

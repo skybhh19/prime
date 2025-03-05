@@ -121,9 +121,6 @@ tensorboard-data-server==0.7.2
 tensorboardX==2.6.2.2
 termcolor==2.4.0
 threadpoolctl==3.5.0
-torch==2.4.1
-torchaudio==2.4.1
-torchvision==0.19.1
 tqdm==4.67.1
 traitlets==5.14.3
 triton==3.0.0
