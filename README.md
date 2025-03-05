@@ -16,15 +16,25 @@ This is the codebase for the [**PRIME**](https://ut-austin-rpl.github.io/prime/)
 ## Installation
 ```commandline
 git clone git@github.com:skybhh19/prime.git
+
+# For cuda 12
 conda create -n prime python=3.8
 conda activate prime
-pip install torch torchvision torchaudio  # Follow the instructions on https://pytorch.org/get-started/locally/
+pip install torch torchvision torchaudio  
+
+# For cuda 11
+conda create -n prime python=3.7.9
+conda activate prime
+pip install torch==1.13.1 torchvision==0.14.1
 ```
 Install robosuite.
 ```commandline
 git clone git@github.com:skybhh19/robosuite.git
 cd robosuite
-pip install -e .
+pip install -r requirements.txt
+pip install -r requirements-extra.txt
+# For cuda 11
+pip install mujoco-py==2.1.2.14 "Cython<3"
 ```
 Install robomimic.
 ```commandline
