@@ -15,7 +15,7 @@ This is the codebase for the [**PRIME**](https://ut-austin-rpl.github.io/prime/)
 
 ## Installation
 ```commandline
-git clone git@github.com:skybhh19/prime.git
+git clone https://github.com/skybhh19/prime.git prime
 
 # For cuda 12
 conda create -n prime python=3.8
@@ -29,7 +29,7 @@ pip install torch==1.13.1 torchvision==0.14.1
 ```
 Install robosuite.
 ```commandline
-git clone git@github.com:skybhh19/robosuite.git
+git clone https://github.com/skybhh19/robosuite.git
 cd robosuite
 pip install -r requirements.txt
 pip install -r requirements-extra.txt
@@ -90,14 +90,14 @@ python scripts/data_processing.py --collect-demos --reformat-rollout-data --data
 cd prime
 
 # TidyUp
-python scripts/train_robomimic_models.py --config prime/exps/primitive/CleanUpMediumSmallInitD2/idm/type/seed1.json 
-python scripts/train_robomimic_models.py --config prime/exps/primitive/CleanUpMediumSmallInitD2/idm/params/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/CleanUpMediumSmallInitD2/idm/type/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/CleanUpMediumSmallInitD2/idm/params/seed1.json 
 # NutAssembly
-python scripts/train_robomimic_models.py --config prime/exps/primitive/NutAssemblyRoundSmallInit/idm/type/seed1.json 
-python scripts/train_robomimic_models.py --config prime/exps/primitive/NutAssemblyRoundSmallInit/idm/params/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/NutAssemblyRoundSmallInit/idm/type/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/NutAssemblyRoundSmallInit/idm/params/seed1.json 
 # PickPlace
-python scripts/train_robomimic_models.py --config prime/exps/primitive/PickPlaceMilk/idm/type/seed1.json 
-python scripts/train_robomimic_models.py --config prime/exps/primitive/PickPlaceMilk/idm/params/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/PickPlaceMilk/idm/type/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/PickPlaceMilk/idm/params/seed1.json 
 ```
 
 ### Segmenting human demonstrations
@@ -113,9 +113,9 @@ python scripts/data_processing.py --segment-demos --demo-path data/PickPlaceMilk
 ### Pre-training policy
 ```commandline
 cd prime
-python scripts/train_robomimic_models.py --config prime/exps/primitive/CleanUpMediumSmallInitD2/policy/pt/params/seed1.json  # TidyUP
-python scripts/train_robomimic_models.py --config prime/exps/primitive/NutAssemblyRoundSmallInit/policy/pt/params/seed1.json  # NutAssembly
-python scripts/train_robomimic_models.py --config prime/exps/primitive/PickPlaceMilk/policy/pt/params/seed1.json  # PickPlace
+python scripts/train_robomimic_models.py --config prime/exps/CleanUpMediumSmallInitD2/policy/pt/params/seed1.json  # TidyUP
+python scripts/train_robomimic_models.py --config prime/exps/NutAssemblyRoundSmallInit/policy/pt/params/seed1.json  # NutAssembly
+python scripts/train_robomimic_models.py --config prime/exps/PickPlaceMilk/policy/pt/params/seed1.json  # PickPlace
 ```
 
 ### Fine-tuning policy
@@ -123,14 +123,14 @@ python scripts/train_robomimic_models.py --config prime/exps/primitive/PickPlace
 cd prime
 
 # TidyUp
-python scripts/train_robomimic_models.py --config prime/exps/primitive/CleanUpMediumSmallInitD2/policy/ft/type/seed1.json 
-python scripts/train_robomimic_models.py --config prime/exps/primitive/CleanUpMediumSmallInitD2/policy/ft/params/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/CleanUpMediumSmallInitD2/policy/ft/type/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/CleanUpMediumSmallInitD2/policy/ft/params/seed1.json 
 # NutAssembly
-python scripts/train_robomimic_models.py --config prime/exps/primitive/NutAssemblyRoundSmallInit/policy/ft/type/seed1.json 
-python scripts/train_robomimic_models.py --config prime/exps/primitive/NutAssemblyRoundSmallInit/policy/ft/params/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/NutAssemblyRoundSmallInit/policy/ft/type/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/NutAssemblyRoundSmallInit/policy/ft/params/seed1.json 
 # PickPlace
-python scripts/train_robomimic_models.py --config prime/exps/primitive/PickPlaceMilk/policy/ft/type/seed1.json 
-python scripts/train_robomimic_models.py --config prime/exps/primitive/PickPlaceMilk/policy/ft/params/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/PickPlaceMilk/policy/ft/type/seed1.json 
+python scripts/train_robomimic_models.py --config prime/exps/PickPlaceMilk/policy/ft/params/seed1.json 
 ``` 
 
 ### Policy evaluation
