@@ -4,7 +4,7 @@ def get_args():
     parser = argparse.ArgumentParser()
 
     # env
-    parser.add_argument('--env', type=str, default='CleanUp')
+    parser.add_argument('--env', type=str, default='CleanUpMediumSmallInitD1')
     parser.add_argument('--controller', type=str, default='OSC_POSE')
     parser.add_argument('--render', action='store_true', default=False)
     parser.add_argument("--camera-names", type=str, nargs='+', default=['agentview', 'robot0_eye_in_hand'])
